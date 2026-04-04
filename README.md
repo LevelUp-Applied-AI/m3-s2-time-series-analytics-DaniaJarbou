@@ -1,77 +1,39 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/LLfWflp4)
-# Time-Series Analytics with Window Functions
+# Executive Report
 
-**Module 3 — Thursday Stretch Assignment**
+## Revenue Trends
 
-You are a Business Intelligence (BI) analyst at an e-commerce company. Leadership wants a quarterly executive report on revenue trends, customer retention, and product category performance. Your tool: advanced SQL window functions applied to 12 months of transactional data.
+Over the last 12 months, revenue [increased / decreased] from [first_month_revenue] in [first_month] to [last_month_revenue] in [last_month], representing a total change of [overall_change_pct]%.
 
-## Dataset
+The strongest month-over-month revenue growth occurred in [best_growth_month] at [best_growth_pct]%, while the weakest month occurred in [worst_growth_month] at [worst_growth_pct]%.
 
-Four tables in a PostgreSQL database:
+Order volume moved from [first_month_orders] orders in [first_month] to [last_month_orders] orders in [last_month], and average order value changed from [first_month_aov] to [last_month_aov]. This suggests that revenue change was driven primarily by [more orders / higher order values / both].
 
-| Table | Rows | Description |
-|---|---|---|
-| `customers` | 5,000 | customer_id, signup_date, segment (Consumer, Business, Enterprise) |
-| `products` | 300 | product_id, name, category, unit_price (list price) |
-| `orders` | ~30,000 | order_id, customer_id, order_date, status (completed, returned, cancelled) |
-| `order_items` | ~68,000 | order_item_id, order_id, product_id, quantity, unit_price (price at time of purchase) |
+At the quarterly level, the strongest quarter-over-quarter revenue growth was recorded in [best_quarter] at [best_qoq_pct]%. Based on the category-level analysis, the main driver of growth appears to be [top_category_or_mix_shift], especially in [month_or_quarter], where its revenue share reached [share_pct]%.
 
-The data spans April 2025 through March 2026. Note that `order_items.unit_price` is the price at time of purchase — it may differ from the product's list price.
+## Customer Retention
 
-## Setup
+Customer cohorts were defined by first-purchase month rather than signup month. The largest cohort was [largest_cohort_month] with [largest_cohort_size] customers, while the smallest cohort was [smallest_cohort_month] with [smallest_cohort_size] customers.
 
-Create a database and load the data from the CSV files in `data/`. If you need a refresher on creating a PostgreSQL database and loading data, refer to the **Setup** section of the Lab 3 Guide.
+The strongest 90-day retention was observed in the [best_retention_cohort] cohort at [best_retention_90d]%, while the weakest was [worst_retention_cohort] at [worst_retention_90d]%.
 
-## Deliverables
+Repeat purchase behavior within 30, 60, and 90 days shows that [main_retention_pattern]. This may suggest that customers acquired during [time_period / campaign season / cohort timing] were more likely to return, possibly due to [better product-market fit / stronger acquisition quality / seasonality].
 
-### SQL Queries
+## Category Performance
 
-Write your queries in the `queries/` directory. Each file should contain well-commented SQL that a colleague could read and understand:
+Category performance was uneven across the year. The top-performing category by revenue in the strongest periods was [top_category], reaching [top_category_revenue] in [month]. Its monthly revenue share peaked at [top_category_share]%.
 
-| File | Analysis |
-|---|---|
-| `cohort_analysis.sql` | Define customer cohorts by first-purchase month using ROW_NUMBER. Analyze repeat-purchase behavior and retention patterns across cohorts. |
-| `growth_analysis.sql` | Use LAG/LEAD to compute month-over-month and quarter-over-quarter revenue and order growth rates. |
-| `trend_analysis.sql` | Calculate moving averages (7-day, 30-day) using window frame specifications (ROWS BETWEEN). Identify trend patterns. |
-| `combined_analysis.sql` | At least two queries that combine multiple window functions in a single query — e.g., cohort retention rates with period-over-period change, or category revenue share with moving average and growth rate. |
+By contrast, [weak_category] showed [declining / slower] performance, with month-over-month category growth reaching [weak_category_growth] in [month].
 
-### Executive Report
+The category mix shifted over time, indicating that revenue growth was not evenly distributed across all product groups. In particular, [category_name] gained share while [other_category_name] lost share, suggesting a change in customer demand and product mix.
 
-Write `report.md` — a business-facing executive report summarizing your findings. This is your primary deliverable. Structure it as a report to leadership, not a code walkthrough:
+## Recommendations
 
-- **Revenue trends**: What happened over the 12-month period? Where is growth coming from?
-- **Customer retention**: Which cohorts retain best? What does this mean for acquisition strategy?
-- **Category performance**: Which categories are growing or declining? What are the implications?
-- **Recommendations**: Based on your analysis, what should the business do next?
+1. Increase budget allocation toward [top_category / top_segment / top-performing cohort source], since it contributed the strongest growth and/or retention.
+2. Investigate the underperformance of [weak_category / weak_cohort], especially during [time period], to determine whether pricing, product mix, or acquisition quality is the issue.
+3. Use the strongest retention cohorts as a model for future acquisition strategy, especially if they align with [season / segment / campaign timing].
+4. Monitor moving-average trends rather than only raw daily numbers, because the smoothed trend lines reveal [key pattern: sustained growth / slowdown / volatility].
+5. For next quarter, prioritize [specific action], as the data suggests it is the clearest lever for improving revenue and retention.
 
-Support every claim with data from your queries. Include relevant numbers, percentages, and comparisons.
+## Conclusion
 
-## What the Autograder Checks
-
-The CI workflow validates mechanical requirements only:
-- Required SQL files exist in `queries/`
-- Each SQL file executes without errors
-- Each SQL file uses at least one window function
-- `report.md` exists with required section headers
-
-**Green checks do not mean the stretch is complete.** Your submission is evaluated on analytical depth, query sophistication, and report quality. The autograder confirms your files are structurally sound — the substance is what earns your score.
-
-## Portfolio Artifact
-
-This stretch produces a strong portfolio piece. A polished executive report backed by sophisticated SQL demonstrates the analytical communication that hiring managers look for in BI and analytics roles. Your queries show technical depth; your report shows business judgment. Your queries show technical depth; your report shows business judgment.
-
-## Submit
-
-1. Create a branch (e.g., `stretch-time-series`)
-2. Add your query files and report
-3. Open a PR to `main`
-4. Paste your PR URL into TalentLMS → Module 3 → Thursday Stretch to submit this assignment
-
-
----
-
-## License
-
-This repository is provided for educational use only. See [LICENSE](LICENSE) for terms.
-
-You may clone and modify this repository for personal learning and practice, and reference code you wrote here in your professional portfolio. Redistribution outside this course is not permitted.
+Overall, the business experienced [summary_trend]. Revenue performance was mainly driven by [primary_driver], while retention strength varied meaningfully across cohorts. The data suggests that the next quarter’s strategy should focus on [main strategic recommendation].
